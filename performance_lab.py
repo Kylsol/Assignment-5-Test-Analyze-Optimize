@@ -7,12 +7,20 @@
 # Output: 3
 
 def most_frequent(numbers):
-    # Your code here
-    pass
+    if not numbers:
+        return None
+    
+    counts = {}
+
+    for num in numbers:
+        if num in counts:
+            counts[num] += 1
+        else:
+            counts[num] = 1
 
 """
 Time and Space Analysis for problem 1:
-- Best-case:
+- Best-case
 - Worst-case:
 - Average-case:
 - Space complexity:
@@ -29,9 +37,16 @@ Time and Space Analysis for problem 1:
 # Output: [4, 5, 6, 7]
 
 def remove_duplicates(nums):
-    # Your code here
-    pass
+    unique_list = []
+    seen = set()
 
+    for num in nums:
+        if num not in seen:
+            unique_list.append(num)
+            seen.add(num)
+    
+    return unique_list
+        
 """
 Time and Space Analysis for problem 2:
 - Best-case:
@@ -52,8 +67,16 @@ Time and Space Analysis for problem 2:
 # Output: [(1, 4), (2, 3)]
 
 def find_pairs(nums, target):
-    # Your code here
-    pass
+    pairs = []
+    seen = set()
+
+    for num in nums:
+        complement = target - num
+        if complement in seen:
+            pairs.append((complement, num))
+        seen.add(num)
+    
+    return pairs
 
 """
 Time and Space Analysis for problem 3:
@@ -75,8 +98,19 @@ Time and Space Analysis for problem 3:
 # add_n_items(6) → should print when resizing happens.
 
 def add_n_items(n):
-    # Your code here
-    pass
+    capacity = 1
+    size = 0
+    arr = []
+
+    for i in range(n):
+        if size == capacity:
+            print(f"Resizing from {capacity} to {capacity * 2}")
+            print(f"Copying {size} items to new list...")
+
+            capacity *= 2
+    
+        arr.append(i)
+        size += 1
 
 """
 Time and Space Analysis for problem 4:
