@@ -18,14 +18,25 @@ def most_frequent(numbers):
         else:
             counts[num] = 1
 
+    return max(counts, key=counts.get)
+
+
 """
 Time and Space Analysis for problem 1:
-- Best-case
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+- Best-case: O(1)
+- Worst-case: O(n)
+- Average-case: O(n)
+- Space complexity: O(n)
+
+- Why this approach? 
+Using a dictionary allows each number to be counted in one pass through the list, making it efficient and easy to understand. 
+The lookups and updates take constant time on average, so the overall performance grows linearly with the size of the input, 
+which matches the description of an effective O(n) solution.
+
+- Could it be optimized? 
+No because this solution already has linear time O(n), 
+which is the most efficient possible because every element must be checked at least once. 
+The algorithm’s growth is directly proportional to input size, and that’s expected for this type of problem.
 """
 
 
@@ -49,13 +60,20 @@ def remove_duplicates(nums):
         
 """
 Time and Space Analysis for problem 2:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+Best-case: O(n)
+Worst-case: O(n)
+Average-case: O(n)
+Space complexity: O(k) distinct elements, up to O(n)
+
+Why this approach? 
+A set gives constant-time membership on average, so one pass preserves first-seen order with simple appends.
+
+Could it be optimized? 
+Not asymptotically. Any order-preserving method must scan the list. Sorting would change order and cost O(n log n).
+Using a list instead of a set for membership would degrade to O(n^2).
 """
+
+
 
 
 # 🔍 Problem 3: Return All Pairs That Sum to Target
@@ -80,13 +98,18 @@ def find_pairs(nums, target):
 
 """
 Time and Space Analysis for problem 3:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+Best case: O(n)
+Worst case: O(n)
+Average case: O(n)
+Space complexity: O(n)
+
+Why this approach?
+A single pass with a set gives linear time and preserves uniqueness by only pairing with previously seen values
+
+Could it be optimized?
+Not asymptotically for unsorted input; if the list were already sorted a two-pointer scan would be O(n) time with O(1) extra space, but sorting first would raise time to O(n log n)
 """
+
 
 
 # 🔍 Problem 4: Simulate List Resizing (Amortized Cost)
@@ -114,11 +137,22 @@ def add_n_items(n):
 
 """
 Time and Space Analysis for problem 4:
-- When do resizes happen?
-- What is the worst-case for a single append?
+- When do resizes happen? 
+When size equals capacity; capacity then doubles
+
+- What is the worst-case for a single append? 
+O(n) when an append triggers a resize and all current elements are copied.
+
 - What is the amortized time per append overall?
+O(1) amortized, since total copies over n appends form a geometric series bounded by ~2n.
+
 - Space complexity:
+O(n) for stored items; during a resize there is a brief peak near 2n, which is still linear.
+
 - Why does doubling reduce the cost overall?
+Because each element is copied only a logarithmic number of times across the whole growth sequence; 
+summing the work over n appends stays linear, making the average cost per append constant.
+
 """
 
 
@@ -132,15 +166,25 @@ Time and Space Analysis for problem 4:
 # Because: [1, 1+2, 1+2+3, 1+2+3+4]
 
 def running_total(nums):
-    # Your code here
-    pass
+    totals = []
+    current_sum = 0
+
+    for num in nums:
+        current_sum += num
+        totals.append(current_sum)
+    return totals
 
 """
 Time and Space Analysis for problem 5:
-- Best-case:
-- Worst-case:
-- Average-case:
-- Space complexity:
-- Why this approach?
-- Could it be optimized?
+Best-case: O(n)
+Worst-case: O(n)
+Average-case: O(n)
+Space complexity: O(n)
+
+Why this approach?
+It efficiently computes running sums in one pass with constant-time updates per element, making it simple, predictable, and scalable for larger inputs
+
+Could it be optimized?
+Only by modifying the input list in place to reuse memory, but the time complexity would remain O(n)
 """
+
