@@ -20,6 +20,17 @@ def most_frequent(numbers):
 
     return max(counts, key=counts.get)
 
+print("Test 1:")
+print("")
+print(most_frequent([1, 3, 2, 3, 4, 1, 3]))  # Expected: 3
+print(most_frequent([]))                     # Expected: None
+print(most_frequent([1, 2, 3, 4]))           # Expected: 1 (or any number in the list)
+print(most_frequent([2, 2, 3, 3]))           # Expected: 2 or 3
+print(most_frequent([7]))                    # Expected: 7
+print("")
+print("")
+
+
 
 """
 Time and Space Analysis for problem 1:
@@ -57,7 +68,17 @@ def remove_duplicates(nums):
             seen.add(num)
     
     return unique_list
-        
+
+print("Test 2:")
+print("")
+print(remove_duplicates([4, 5, 4, 6, 5, 7]))   # Expected: [4, 5, 6, 7]   
+print(remove_duplicates([]))                   # Expected: []
+print(remove_duplicates([1, 2, 3, 4]))         # Expected: [1, 2, 3, 4]
+print(remove_duplicates([9, 9, 9, 9]))         # Expected: [9]
+print("")
+print("")
+
+
 """
 Time and Space Analysis for problem 2:
 Best-case: O(n)
@@ -95,6 +116,18 @@ def find_pairs(nums, target):
         seen.add(num)
     
     return pairs
+
+print("Test 3:")
+print("")
+print(find_pairs([1, 2, 3, 4], 5))                  # Expected: [(1, 4), (2, 3)]
+print(find_pairs([], 5))                            # Expected: []
+print(find_pairs([7], 7))                           # Expected: []
+print(find_pairs([-2, 0, 2, 4], 2))                 # Expected: [(-2, 4), (0, 2)]
+print(find_pairs([4, 5, 6], 10))                    # Expected: [(4, 6)]
+print("")
+print("")
+
+
 
 """
 Time and Space Analysis for problem 3:
@@ -135,6 +168,23 @@ def add_n_items(n):
         arr.append(i)
         size += 1
 
+print("Test 4:")
+print("")
+add_n_items(1)              # (No resizing messages, since capacity starts at 1)
+print("")
+add_n_items(2)              # Resizing from 1 to 2, Copying 1 items to new list...
+print("")
+add_n_items(6)              # Resizing from 1 to 2, Copying 1 items to new list..., Resizing from 2 to 4, Copying 2 items to new list..., Resizing from 4 to 8, Copying 4 items to new list...
+print("")
+add_n_items(10)             # Expected Output: ,Should print resizing messages for 1→2, 2→4, 4→8
+print("")
+add_n_items(0)              # Expected Output: ,(No output at all)
+print("")
+print("")
+print("")
+
+
+
 """
 Time and Space Analysis for problem 4:
 - When do resizes happen? 
@@ -173,6 +223,18 @@ def running_total(nums):
         current_sum += num
         totals.append(current_sum)
     return totals
+
+print("Test 5:")
+print("")
+print(running_total([1, 2, 3, 4]))        # Expected: [1, 3, 6, 10]
+print(running_total([]))                  # Expected: []
+print(running_total([7]))                 # Expected: [7]
+print(running_total([-1, 2, -3, 4]))      # Expected: [-1, 1, -2, 2]
+print(running_total([0, 0, 0]))           # Expected: [0, 0, 0]
+print(running_total([5, -2, 3, -1, 4]))   # Expected: [5, 3, 6, 5, 9]
+print(running_total(list(range(1, 11))))  # Expected: [1, 3, 6, 10, 15, 21, 28, 36, 45, 55]
+print("")
+print("")
 
 """
 Time and Space Analysis for problem 5:
